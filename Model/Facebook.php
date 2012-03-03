@@ -13,6 +13,4 @@ class Facebook extends IcingAuthAppModel {
 		echo 'hasdf';
 	}
 	
-	protected function configs(){
-	}
 }
