@@ -1,15 +1,15 @@
 <?php
 class IcingAuthAppModel extends AppModel {
+	private $uses = array();
 	
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
 		
-		$this->loadConfig();
+//		$this->loadConfig();
 	}
 	
 	public function loadConfig(){
-		debug(Configure::read('IcingAuth'));
+		$uses = Configure::read('IcingAuth.uses');
 	}
-	
-	
+		
 }
