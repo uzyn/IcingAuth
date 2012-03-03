@@ -16,7 +16,7 @@ class IcingAuthAppModel extends AppModel {
 		$value = Configure::read($configureKey);
 		
 		if (empty($value) || $value == $not){
-			trigger_error("Expects Configuration key: $configureKey", E_USER_WARNING);
+			trigger_error("CakePHP's configuration key: $configureKey expected.", E_USER_WARNING);
 		}
 		return $value;
 	}
