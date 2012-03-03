@@ -11,8 +11,8 @@ Configure::write('IcingAuth.uses', array());
 /**
  * Facebook configs
  */
-Configure::write('IcingAuth.facebook', array(
-	'id' => 'app id',
+Configure::write('IcingAuth.Facebook', array(
+	'id' => 'App ID',
 	'secret' => 'secret key'
 ));
 Configure::write('IcingAuth.uses.facebook', true);

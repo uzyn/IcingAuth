@@ -1,6 +1,7 @@
 <?php
 class Facebook extends IcingAuthAppModel {
     public $name = 'Facebook';
+	public $useTable = false;
 	
 	/**
 	 * Loads configs
@@ -8,7 +9,7 @@ class Facebook extends IcingAuthAppModel {
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
 		
-		debug('Facebook init');
+		$this->expects('id', 'App ID');
 	}
 	
 	public function request(){
