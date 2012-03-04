@@ -34,9 +34,14 @@ class Facebook extends IcingAuthAppModel {
 	}
 	
 	public function request(){
-		$url = 'https://www.facebook.com/dialog/oauth?';
-		$url .= 'client_id='.$this->configs['id'];
-		return $url;
+		$url = 'https://www.facebook.com/dialog/oauth';
+		
+		$params = array(
+			'client_id' => $this->configs['id'],
+			'redirect_uri' => $this->configs['redirect_uri']
+		);
+		if (!empty($this->configs['scope'])) $params['scope'] = $this->configs['scope'];
+		
+		return $url.'?'.http_build_query($params);
 	}
-	
 }

@@ -9,13 +9,18 @@ class IcingAuthAppModel extends AppModel {
 		parent::__construct($id, $table, $ds);
 		
 		if (is_array($this->compulsories)){
-			foreach ($this->compulsories as $key => $value){
-				$this->compulsories[$key] = $this->expects($key, $value);
+			foreach ($this->compulsories as $key => $not){
+				$this->compulsories[$key] = $this->expects($key, $not);
+			}
+		}
+
+		if (is_array($this->optionals)){
+			foreach ($this->optionals as $key => $default){
+				$this->optionals[$key] = $this->optional($key, $default);
 			}
 		}
 		
-		debug($this->compulsories);
-		exit();
+		$this->configs = array_merge($this->compulsories, $this->optionals);
 	}
 	
 	/**
@@ -36,12 +41,13 @@ class IcingAuthAppModel extends AppModel {
 	/**
 	 * Loads an optional value from Configure if it is set
 	 */
-	public function optional($key){
+	public function optional($key, $default = null){
 		$configureKey = 'IcingAuth.'.$this->name.'.'.$key;
 		
 		$value = Configure::read($configureKey);
-		
-		if (!empty($value)) return $value;
+	
+		if (empty($value)) return $default;
+		else return $value;
 	}
 		
 }
