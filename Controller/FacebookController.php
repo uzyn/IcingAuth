@@ -8,6 +8,6 @@ class FacebookController extends IcingAuthAppController {
 	}
 	
 	public function request(){
-		echo $this->Facebook->request();
+		$this->redirect($this->Facebook->request());
 	}
 }

@@ -9,6 +9,13 @@
 
 /**
  * Facebook configs
+ *    Compulsory
  */
-Configure::write('IcingAuth.Facebook.id', 'App ID');
-Configure::write('IcingAuth.Facebook.secret', 'App Secret');
+	Configure::write('IcingAuth.Facebook.app_id', 'App ID');
+	Configure::write('IcingAuth.Facebook.app_secret', 'App Secret');
+
+/**
+ * Facebook configs
+ *    Optional
+ */
+	//Configure::write('IcingAuth.Facebook.scope, '');
