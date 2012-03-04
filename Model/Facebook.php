@@ -27,10 +27,6 @@ class Facebook extends IcingAuthAppModel {
 	 */
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
-		
-		$this->configs['id'] = $this->expects('app_id', 'App ID');
-		$this->configs['secret'] = $this->expects('app_secret', 'App Secret');
-		
 	}
 	
 	public function request(){
