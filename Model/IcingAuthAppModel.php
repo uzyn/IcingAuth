@@ -26,7 +26,7 @@ class IcingAuthAppModel extends AppModel {
 	/**
 	 * Loads a compulsory value from Configure, throws an error if it's not set
 	 */
-	public function expects($key, $not = null){
+	protected function expects($key, $not = null){
 		$configureKey = 'IcingAuth.'.$this->name.'.'.$key;
 		
 		$value = Configure::read($configureKey);
@@ -41,7 +41,7 @@ class IcingAuthAppModel extends AppModel {
 	/**
 	 * Loads an optional value from Configure if it is set
 	 */
-	public function optional($key, $default = null){
+	protected function optional($key, $default = null){
 		$configureKey = 'IcingAuth.'.$this->name.'.'.$key;
 		
 		$value = Configure::read($configureKey);

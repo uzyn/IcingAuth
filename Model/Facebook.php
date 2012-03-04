@@ -33,11 +33,11 @@ class Facebook extends IcingAuthAppModel {
 		$url = 'https://www.facebook.com/dialog/oauth';
 		
 		$params = array(
-			'client_id' => $this->configs['id'],
+			'client_id' => $this->configs['app_id'],
 			'redirect_uri' => $this->configs['redirect_uri']
 		);
 		if (!empty($this->configs['scope'])) $params['scope'] = $this->configs['scope'];
-		
+
 		return $url.'?'.http_build_query($params);
 	}
 }
