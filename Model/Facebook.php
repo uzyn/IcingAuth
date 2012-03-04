@@ -5,7 +5,18 @@ class Facebook extends IcingAuthAppModel {
 	
 	public $configs = array();
 	
-	public $compulsories = array('app_id', 'app_secret', 'redirect_uri');
+	/**
+	 * Compulsory configuration values
+	 */ 
+	public $compulsories = array(
+		'app_id' => 'App ID',
+		'app_secret' => 'App Secret', 
+		'redirect_uri' => 'Redirect URI'
+	);
+	
+	/**
+	 * Optional configuration values, with default values
+	 */	
 	public $optionals = array(
 		'url' => 'https://www.facebook.com/dialog/oauth',
 		'scope' => null
