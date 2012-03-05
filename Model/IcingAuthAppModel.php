@@ -55,5 +55,12 @@ class IcingAuthAppModel extends AppModel {
 		if (empty($value)) return $default;
 		else return $value;
 	}
+	
+	protected function httpGet($url = null, $query = array(), $request = array()){
+		App::uses('HttpSocket', 'Network/Http');
+
+		$HttpSocket = new HttpSocket();
+		return $HttpSocket->get($url, $query, $request);
+	}
 		
 }

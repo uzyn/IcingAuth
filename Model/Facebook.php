@@ -52,7 +52,13 @@ class Facebook extends IcingAuthAppModel {
 			'client_secret' => $this->configs['app_secret']
 		);
 		
-		debug($params);
-		exit();
+		App::uses('HttpSocket', 'Network/Http');
+		$HttpSocket = new HttpSocket();
+		$response = $HttpSocket->get($url, $params);
+		
+		if ($response->isOK()){
+			debug($response->body);
+		}
+		else return false;
 	}
 }
