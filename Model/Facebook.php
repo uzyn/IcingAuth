@@ -11,7 +11,6 @@ class Facebook extends IcingAuthAppModel {
 	public $compulsories = array(
 		'app_id' => 'App ID',
 		'app_secret' => 'App Secret', 
-		'redirect_uri' => 'Redirect URI'
 	);
 	
 	/**
@@ -19,6 +18,7 @@ class Facebook extends IcingAuthAppModel {
 	 */	
 	public $optionals = array(
 		'url' => 'https://www.facebook.com/dialog/oauth',
+		'redirect_uri' => null,
 		'scope' => null
 	);
 	

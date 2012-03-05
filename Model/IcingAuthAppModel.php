@@ -1,5 +1,8 @@
 <?php
 class IcingAuthAppModel extends AppModel {
+	public $callback_url;
+	public $request_url;
+	
 	public $compulsories = array();
 	public $optionals = array();
 	
@@ -7,6 +10,9 @@ class IcingAuthAppModel extends AppModel {
 	
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
+		
+		$this->callback_url = Router::url(array('action' => 'callback'), true);
+		$this->request_url = Router::url(array('action' => 'request'), true);
 		
 		if (is_array($this->compulsories)){
 			foreach ($this->compulsories as $key => $not){
