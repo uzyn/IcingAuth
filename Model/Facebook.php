@@ -57,7 +57,9 @@ class Facebook extends IcingAuthAppModel {
 		$response = $HttpSocket->get($url, $params);
 		
 		if ($response->isOK()){
-			debug($response->body);
+			parse_str($response->body, $results);
+			debug($results);
+			return $results;
 		}
 		else return false;
 	}
