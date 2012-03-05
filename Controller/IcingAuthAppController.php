@@ -2,13 +2,6 @@
 class IcingAuthAppController extends AppController {
 	
 	/**
-	 * index() as alias of request()
-	 */
-	public function index(){
-		$this->request();
-	}
-	
-	/**
 	 * Request for auth, overrides this at strategy's controller
 	 */
 	public function request(){
@@ -18,5 +11,12 @@ class IcingAuthAppController extends AppController {
 	 * Callback for auth, successful or otherwise
 	 */
 	public function callback(){
+	}
+	
+	/**
+	 * Alias of request()
+	 */
+	public function index(){
+		$this->request();
 	}
 }

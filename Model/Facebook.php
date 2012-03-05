@@ -18,7 +18,6 @@ class Facebook extends IcingAuthAppModel {
 	 */	
 	public $optionals = array(
 		'url' => 'https://www.facebook.com/dialog/oauth',
-		'redirect_uri' => null,
 		'scope' => null
 	);
 	
@@ -28,7 +27,7 @@ class Facebook extends IcingAuthAppModel {
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
 		
-		if (empty($this->configs['redirect_uri'])) $this->configs['redirect_uri'] = $this->callback_url;
+		$this->configs['redirect_uri'] = Router::url(array('action' => 'after_auth'), true);
 	}
 	
 	public function request(){
