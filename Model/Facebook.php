@@ -27,6 +27,9 @@ class Facebook extends IcingAuthAppModel {
 	 */
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct($id, $table, $ds);
+		
+		if (empty($this->configs['redirect_uri'])) $this->configs['redirect_uri'] = $this->callback_url;
+		debug($this->callback_url);
 	}
 	
 	public function request(){
@@ -37,7 +40,7 @@ class Facebook extends IcingAuthAppModel {
 			'redirect_uri' => $this->configs['redirect_uri']
 		);
 		if (!empty($this->configs['scope'])) $params['scope'] = $this->configs['scope'];
-
+		
 		return $url.'?'.http_build_query($params);
 	}
 }
