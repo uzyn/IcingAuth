@@ -58,7 +58,31 @@ class Facebook extends IcingAuthAppModel {
 		
 		if ($response->isOK()){
 			parse_str($response->body, $results);
-			debug($results);
+			if (!empty($results['access_token'])){
+				$me = $this->me($results['access_token']);
+			}
+			else return false;
+			return $results;
+		}
+		else return false;
+	}
+	
+	/**
+	 * Obtains user info via Facebook Graph API (/me)
+	 */
+	public function me($access_token){
+		$url = 'https://graph.facebook.com/me';
+		
+		$params = array(
+			'access_token' => $access_token
+		);
+		
+		App::uses('HttpSocket', 'Network/Http');
+		$HttpSocket = new HttpSocket();
+		$response = $HttpSocket->get($url, $params);
+		
+		if ($response->isOK()){
+			$results = json_decode($response->body);
 			return $results;
 		}
 		else return false;
