@@ -30,7 +30,7 @@ class Facebook extends IcingAuthAppModel {
 		$this->configs['redirect_uri'] = Router::url(array('action' => 'after_auth'), true);
 	}
 	
-	public function request(){
+	public function requestURL(){
 		$url = 'https://www.facebook.com/dialog/oauth';
 		
 		$params = array(
@@ -40,5 +40,19 @@ class Facebook extends IcingAuthAppModel {
 		if (!empty($this->configs['scope'])) $params['scope'] = $this->configs['scope'];
 		
 		return $url.'?'.http_build_query($params);
+	}
+	
+	public function validateCode($code){
+		$url = 'https://graph.facebook.com/oauth/access_token';
+		
+		$params = array(
+			'client_id' => $this->configs['app_id'],
+			'redirect_uri' => $this->configs['redirect_uri'],
+			'code' => $code,
+			'client_secret' => $this->configs['app_secret']
+		);
+		
+		debug($params);
+		exit();
 	}
 }

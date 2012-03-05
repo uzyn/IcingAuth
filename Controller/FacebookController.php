@@ -4,12 +4,16 @@ class FacebookController extends IcingAuthAppController {
 	public $autoRender = false;
 	
 	public function request(){
-		$this->redirect($this->Facebook->request());
+		$this->redirect($this->Facebook->requestURL());
 	}
 	
+	/**
+	 * Callback (internal wrt. IcingAuth) after initial request with Facebook
+	 */
 	public function after_auth(){
 		if (!empty($this->request->query['code'])){
-			debug('success');
+			$code = $this->request->query['code'];
+			$this->Facebook->validateCode($code);
 		}
 		else{
 			debug('failure');
